@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://datyg1y346kdo"]
+[gd_scene load_steps=40 format=3 uid="uid://datyg1y346kdo"]
 
 [ext_resource type="Script" path="res://maps/field/field.gd" id="1_fwxb5"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="2_4lieg"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="18_auxl7"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="19_25d7t"]
 [ext_resource type="PackedScene" uid="uid://rb6h65pi6tip" path="res://ui/inventory_gui.tscn" id="19_nal3v"]
+[ext_resource type="PackedScene" uid="uid://cxixomci502fp" path="res://npc_1.tscn" id="22_s7vln"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qw6d6"]
 scenes/1/scene = ExtResource("3_54mll")
@@ -1300,6 +1301,9 @@ offset_left = -165.0
 offset_top = -103.0
 offset_right = 166.0
 offset_bottom = 101.0
+
+[node name="NPC1" parent="." instance=ExtResource("22_s7vln")]
+position = Vector2(159.832, 473)
 
 [connection signal="body_entered" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_entered"]
 [connection signal="body_exited" from="cliffside_transition_point" to="." method="_on_cliffside_transition_point_body_exited"]

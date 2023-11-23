@@ -4,7 +4,12 @@ extends Node2D
 @onready var sprite = $Sprite2D
 
 const lines: Array[String] = [
-	"Hey there!"
+	"Hey there!",
+	"Did you know that the hole in the apple didn't come from the outside in?",
+	"It was eaten from the core and out to the skin, and that's why youll never find the worm in it",
+	"But a few bad ones won't spoil the eyes if they fall far enough from the tree",
+	"The rind is all you see, leave Eden with my...",
+	"seeds in your stomach"
 ]
 
 func _ready():
@@ -12,5 +17,5 @@ func _ready():
 
 
 func _on_interact():
-	#DialogManager.start_dialog
-	pass
+	DialogManager.start_dialog(global_position, lines)
+	await DialogManager.dialog_finished
