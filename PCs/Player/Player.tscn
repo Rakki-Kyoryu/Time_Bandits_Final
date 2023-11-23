@@ -442,7 +442,7 @@ _data = {
 "walk_down": SubResource("Animation_87drq")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["Player"]]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_xo3eq")
 inventory = ExtResource("2_sndne")
@@ -455,6 +455,7 @@ shape = SubResource("RectangleShape2D_sciuk")
 
 [node name="player_hitbox" type="Area2D" parent="."]
 scale = Vector2(1.37139, 1.12845)
+collision_layer = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_hitbox"]
 position = Vector2(-0.729186, -8.41863)

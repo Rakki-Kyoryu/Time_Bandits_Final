@@ -9,7 +9,8 @@ const lines: Array[String] = [
 	"It was eaten from the core and out to the skin, and that's why youll never find the worm in it",
 	"But a few bad ones won't spoil the eyes if they fall far enough from the tree",
 	"The rind is all you see, leave Eden with my...",
-	"seeds in your stomach"
+	"seeds in your stomach",
+	"Outliers and Hypocrites, A fun fact about apples! - Will Wood"
 ]
 
 func _ready():
@@ -19,3 +20,12 @@ func _ready():
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines)
 	await DialogManager.dialog_finished
+
+
+func _on_interaction_area_body_entered(body):
+	#InteractionLabel.show_label(global_position, "talk")
+	pass
+
+
+func _on_interaction_area_body_exited(body):
+	pass # Replace with function body.

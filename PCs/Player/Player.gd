@@ -21,6 +21,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
+	Global.player_health = current_health
 	enemy_attacks()
 	handle_input()
 	move_and_slide()
@@ -98,10 +99,6 @@ func _on_player_hitbox_area_entered(area):
 		area.collect(inventory)
 	
 		
-
-
-
-
 
 func _on_sword_hit_area_entered(area):
 	if area.is_in_group("hurtbox"):
