@@ -1,10 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://rvof7u3euf3h"]
+[gd_scene load_steps=26 format=3 uid="uid://rvof7u3euf3h"]
 
 [ext_resource type="Script" path="res://PCs/Player/Player.gd" id="1_xo3eq"]
 [ext_resource type="Resource" uid="uid://cam5nqt6xmsiu" path="res://ui/inventory/player_inventory.tres" id="2_sndne"]
 [ext_resource type="Texture2D" uid="uid://dnvcesvjat4af" path="res://art/sprites/characters/player.png" id="2_vw58g"]
 [ext_resource type="FontFile" uid="uid://cpk2xqork2n37" path="res://art/2D/view-Ortho/textbox/PublicPixel-z84yD.ttf" id="4_ka0e5"]
-[ext_resource type="Script" path="res://ui/DialogPopup.gd" id="4_w4706"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sciuk"]
 size = Vector2(18.8241, 20.8046)
@@ -264,7 +263,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_boqhn"]
 resource_name = "idleLeft"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -292,7 +290,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_mpjuk"]
 resource_name = "idleRight"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -338,6 +335,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_1i0n7"]
 resource_name = "walkDown"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -354,6 +352,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_2u00m"]
 resource_name = "walkLeft"
 length = 0.6
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -426,21 +425,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_87drq"]
 resource_name = "walk_down"
 
-[sub_resource type="Animation" id="Animation_vrs10"]
-resource_name = "typewriter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogPopup/Dialog/Message:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_snqwp"]
 _data = {
 "RESET": SubResource("Animation_e0ju0"),
@@ -452,7 +436,6 @@ _data = {
 "idleLeft": SubResource("Animation_boqhn"),
 "idleRight": SubResource("Animation_mpjuk"),
 "idleUp": SubResource("Animation_2ks7j"),
-"typewriter": SubResource("Animation_vrs10"),
 "walkDown": SubResource("Animation_1i0n7"),
 "walkLeft": SubResource("Animation_2u00m"),
 "walkRight": SubResource("Animation_5s8si"),
@@ -539,7 +522,6 @@ libraries = {
 
 [node name="DialogPopup" type="Popup" parent="."]
 size = Vector2i(310, 70)
-script = ExtResource("4_w4706")
 
 [node name="Dialog" type="ColorRect" parent="DialogPopup"]
 anchors_preset = 7
@@ -593,5 +575,4 @@ vertical_alignment = 1
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="area_entered" from="Sprite2D/Sword Hit" to="." method="_on_sword_hit_area_entered"]
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

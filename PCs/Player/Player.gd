@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Player
 
-const speed = 200
+@export var speed = 200
 
 var enemy_in_attack_range = false
 var enemy_attack_cooldown = true
@@ -15,6 +15,9 @@ var last_pressed = "Down"
 var lastAnimDirection: String = "Down"
 var isAttacking: bool = false
 @export var inventory: Inventory
+@onready var ray_cast = $RayCast2D
+var new_direction = Vector2(0,1)
+var animation
 
 
 func _ready():
@@ -22,10 +25,28 @@ func _ready():
 
 func _physics_process(delta):
 	Global.player_health = current_health
+	var direction: Vector2
+	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+
+	if abs(direction.x) == 1 and abs(direction.y) == 1:
+		direction = direction.normalized()
+		
+	var movement = speed * direction * delta
+	
+	if isAttacking == false:
+		move_and_collide(movement)
+		player_animations(direction)
+		
+	if !Input.is_anything_pressed():
+		if isAttacking == false:
+			animation = "idle" + returned_direction(new_direction)
+	
+	if direction != Vector2.ZERO:
+		ray_cast.target_position = direction.normalized() * 50
+	
 	enemy_attacks()
-	handle_input()
-	move_and_slide()
-	update_animations()
+
 	current_camera()
 	
 	if current_health <= 0:
@@ -34,41 +55,45 @@ func _physics_process(delta):
 		self.queue_free()
 
 func handle_input():
-	var move_direction = Input.get_vector("left", "right", "up", "down")
-	velocity = move_direction * speed
+	#var move_direction = Input.get_vector("left", "right", "up", "down")
+	pass
 	
-	if Input.is_action_just_pressed("attack"):
-		attack()
-		
-func attack():
-	animations.play("attack" + lastAnimDirection)
-	isAttacking = true
-	await animations.animation_finished
-	isAttacking = false
+func returned_direction(direction : Vector2):
+		var normalized_direction  = direction.normalized()
+		var default_return = "Right"
+		if normalized_direction.y > 0:
+			return "Down"
+		elif normalized_direction.y < 0:
+			return "Up"
+		elif normalized_direction.x > 0:
+			return "Right"
+		elif normalized_direction.x < 0:
+			return "Left"
+		return default_return
 
-func update_animations():
-	if isAttacking: return
-	
-	if velocity.length() == 0:
-		animations.play("idle" + last_pressed)
+func player_animations(direction : Vector2):
+	#if isAttacking: return
+	if direction != Vector2.ZERO:
+		new_direction = direction
+		animation = "walk" + returned_direction(new_direction)
+		animations.play(animation)
 	else:
-		var direction = "Down"
-		last_pressed = "Down"
-		if velocity.x < 0: 
-			direction = "Left"
-			last_pressed = "Left"
-		elif velocity.x > 0: 
-			direction = "Right"
-			last_pressed = "Right"
-		elif velocity.y < 0: 
-			direction = "Up"
-			last_pressed = "Up"
-		
-		animations.play("walk" + direction)
-		lastAnimDirection = direction
+		animation  = "idle" + returned_direction(new_direction)
+		animations.play(animation)
 	
-
 	
+func _input(event):
+	#input event for our attacking, i.e. our shooting
+	if event.is_action_pressed("attack"):
+		#attacking/shooting anim
+		isAttacking = true
+		var animation  = "attack" + returned_direction(new_direction)
+		animations.play(animation)
+	elif event.is_action_pressed("interact"):
+			var target = ray_cast.get_collider()
+			if target != null:
+				if target.is_in_group("NPC"):
+					return
 
 func player_check():
 	pass
@@ -116,3 +141,7 @@ func _on_player_hitbox_body_exited(body):
 		enemy_in_attack_range = false
 
 
+
+
+func _on_animation_player_animation_finished(anim_name):
+	isAttacking = false
