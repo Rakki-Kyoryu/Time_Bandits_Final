@@ -93,7 +93,8 @@ func _input(event):
 			var target = ray_cast.get_collider()
 			if target != null:
 				if target.is_in_group("NPC"):
-					return
+					target.dialog()
+					#return
 
 func player_check():
 	pass

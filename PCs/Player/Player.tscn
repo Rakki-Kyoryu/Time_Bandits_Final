@@ -335,6 +335,21 @@ tracks/0/keys = {
 "values": [Vector2i(0, 2), Vector2i(1, 2), Vector2i(2, 2), Vector2i(2, 2), Vector2i(3, 2), Vector2i(4, 2), Vector2i(5, 2)]
 }
 
+[sub_resource type="Animation" id="Animation_vrs10"]
+resource_name = "typewriter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DialogPopup/Dialog/Message:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
 [sub_resource type="Animation" id="Animation_1i0n7"]
 resource_name = "walkDown"
 length = 0.6
@@ -426,21 +441,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_87drq"]
 resource_name = "walk_down"
 
-[sub_resource type="Animation" id="Animation_vrs10"]
-resource_name = "typewriter"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("DialogPopup/Dialog/Message:visible_ratio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_snqwp"]
 _data = {
 "RESET": SubResource("Animation_e0ju0"),
@@ -461,6 +461,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+process_mode = 3
 collision_layer = 3
 script = ExtResource("1_xo3eq")
 inventory = ExtResource("2_sndne")
@@ -537,8 +538,9 @@ libraries = {
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
-[node name="DialogPopup" type="Popup" parent="."]
-size = Vector2i(310, 70)
+[node name="DialogPopup" type="CanvasLayer" parent="."]
+process_mode = 2
+visible = false
 script = ExtResource("4_w4706")
 
 [node name="Dialog" type="ColorRect" parent="DialogPopup"]
@@ -594,4 +596,5 @@ vertical_alignment = 1
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="area_entered" from="Sprite2D/Sword Hit" to="." method="_on_sword_hit_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="DialogPopup" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]

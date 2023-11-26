@@ -1,8 +1,7 @@
 extends CharacterBody2D
-@onready var player_scene = preload("res://PCs/Player/Player.tscn").instance()
 
-@onready var dialog_popup = player_scene.get_node("DialogPopup")
-@onready var player = player_scene
+@onready var dialog_popup = get_tree().root.get_node("%s/Player/DialogPopup" % Global.current_scene)
+@onready var player = get_tree().root.get_node("%s/Player" % Global.current_scene)
 @onready var animation_sprite = $AnimatedSprite2D
 
 #quest and dialog states
