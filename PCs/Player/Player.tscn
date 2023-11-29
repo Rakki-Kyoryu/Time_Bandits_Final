@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://rvof7u3euf3h"]
+[gd_scene load_steps=26 format=3 uid="uid://rvof7u3euf3h"]
 
 [ext_resource type="Script" path="res://PCs/Player/Player.gd" id="1_xo3eq"]
 [ext_resource type="Resource" uid="uid://cam5nqt6xmsiu" path="res://ui/inventory/player_inventory.tres" id="2_sndne"]
@@ -442,6 +442,8 @@ _data = {
 "walk_down": SubResource("Animation_87drq")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_df3jt"]
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 3
 script = ExtResource("1_xo3eq")
@@ -517,8 +519,15 @@ libraries = {
 
 [node name="attack_cooldown" type="Timer" parent="."]
 
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(-3, -9)
+shape = SubResource("CircleShape2D_df3jt")
+
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="area_entered" from="Sprite2D/Sword Hit" to="." method="_on_sword_hit_area_entered"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]

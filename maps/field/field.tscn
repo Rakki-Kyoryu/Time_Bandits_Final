@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="2_4lieg"]
 [ext_resource type="PackedScene" uid="uid://d2nmdnnhfjo8i" path="res://ui/mana.tscn" id="3_54mll"]
 [ext_resource type="PackedScene" uid="uid://melckmra2sqi" path="res://ui/potion.tscn" id="3_675uc"]
-[ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="3_kfe4m"]
 [ext_resource type="Texture2D" uid="uid://b27s6lb21ut08" path="res://art/sprites/tilesets/walls/wooden_door.png" id="4_ap4sk"]
 [ext_resource type="Texture2D" uid="uid://chuu4xd2ovv6r" path="res://art/sprites/tilesets/walls/wooden_door_b.png" id="5_gkr6k"]
 [ext_resource type="Texture2D" uid="uid://bbbsb1kxfgimj" path="res://art/sprites/tilesets/decor_8x8.png" id="6_q2vsd"]
@@ -20,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cfn41g5o0yyj7" path="res://art/sprites/tilesets/walls/walls.png" id="16_ggcsi"]
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="18_auxl7"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="19_25d7t"]
+[ext_resource type="PackedScene" uid="uid://c4qryaxfwynpw" path="res://PCs/enemy/boss.tscn" id="19_bdsmr"]
 [ext_resource type="PackedScene" uid="uid://rb6h65pi6tip" path="res://ui/inventory_gui.tscn" id="19_nal3v"]
 [ext_resource type="PackedScene" uid="uid://cxixomci502fp" path="res://npc_1.tscn" id="22_s7vln"]
 
@@ -1269,8 +1269,8 @@ layer_2/y_sort_origin = 0
 layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array(1179674, 1, 65536, 1441834, 1, 65536, 1048621, 1, 65536, 1310754, 1, 65536, 1638427, 1, 65536, 1507376, 1, 65536, 1310775, 1, 65536, 720950, 1, 65536, 589845, 1, 65536, 983059, 1, 65536, 1310731, 0, 65536, 1966102, 0, 65536, 2031662, 0, 65536, 1900582, 0, 65536, 1507388, 0, 65536, 1376273, 0, 65536, 1179717, 0, 65536)
 
-[node name="enemy" parent="TileMap" instance=ExtResource("3_kfe4m")]
-position = Vector2(482.494, 329)
+[node name="Boss" parent="TileMap" instance=ExtResource("19_bdsmr")]
+position = Vector2(478.499, 515)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(1214.72, 502)

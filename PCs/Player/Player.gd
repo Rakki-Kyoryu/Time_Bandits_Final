@@ -116,3 +116,15 @@ func _on_player_hitbox_body_exited(body):
 		enemy_in_attack_range = false
 
 
+
+
+func _on_hurtbox_area_entered(area):
+	if area == $hitbox: return
+	current_health = current_health - 20
+	Global.player_health = current_health
+	health_changed = true
+	print(current_health)
+	if current_health <=0:
+		$AnimatedSprite2D.play("death")
+		await $AnimatedSprite2D.animation_finished
+		queue_free()

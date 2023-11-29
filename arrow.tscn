@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dymjp7uhab0sb"]
+
+[ext_resource type="Script" path="res://Arrow.gd" id="1_n4rnh"]
+[ext_resource type="Texture2D" uid="uid://dwxkqb7t5knur" path="res://art/2D/view-Ortho/textbox/speech_bubble.png" id="2_oj7ym"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kmkud"]
+radius = 5.0
+height = 70.0
+
+[node name="Arrow" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_n4rnh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-9.53674e-07, 4.76837e-07)
+rotation = 1.5708
+scale = Vector2(0.0113875, 0.0902467)
+texture = ExtResource("2_oj7ym")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["hitbox"]]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kmkud")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(0.5, 2.38419e-07)
+scale = Vector2(0.45, 0.5)
+
+[connection signal="screen_exited" from="VisibleOnScreenEnabler2D" to="." method="_on_visible_on_screen_enabler_2d_screen_exited"]
