@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://rvof7u3euf3h"]
+[gd_scene load_steps=27 format=3 uid="uid://rvof7u3euf3h"]
 
 [ext_resource type="Script" path="res://PCs/Player/Player.gd" id="1_xo3eq"]
 [ext_resource type="Resource" uid="uid://cam5nqt6xmsiu" path="res://ui/inventory/player_inventory.tres" id="2_sndne"]
@@ -244,6 +244,22 @@ tracks/1/keys = {
 "values": [true, false, true, true]
 }
 
+[sub_resource type="Animation" id="Animation_ru4h3"]
+resource_name = "death"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [54, 55, 56]
+}
+
 [sub_resource type="Animation" id="Animation_pc18l"]
 resource_name = "idleDown"
 loop_mode = 1
@@ -431,6 +447,7 @@ _data = {
 "attackLeft": SubResource("Animation_8kjgt"),
 "attackRight": SubResource("Animation_uqetb"),
 "attackUp": SubResource("Animation_w4q82"),
+"death": SubResource("Animation_ru4h3"),
 "idleDown": SubResource("Animation_pc18l"),
 "idleLeft": SubResource("Animation_boqhn"),
 "idleRight": SubResource("Animation_mpjuk"),
@@ -524,6 +541,12 @@ libraries = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(-3, -9)
 shape = SubResource("CircleShape2D_df3jt")
+
+[node name="plato_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="plato_boss_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]

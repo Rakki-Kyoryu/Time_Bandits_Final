@@ -28,7 +28,7 @@ func _on_cliffside_transition_point_body_exited(body):
 func change_scene():
 	if Global.transition_scene == true:
 		if Global.current_scene == "field":
-			get_tree().change_scene_to_file("res://maps/cliffside/cliff_side.tscn")
+			get_tree().change_scene_to_file("res://maps/PlatosJournal.tscn")
 			Global.finish_changing_scenes()
 
 

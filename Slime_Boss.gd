@@ -1,19 +1,16 @@
 extends CharacterBody2D
 
-class_name Boss
+class_name Slime_Boss
 
-@onready var animation_sprite = $AnimatedSprite2D
-var speed = 75
+var speed = 80
 var player_chase = false
 var player = null
 
-var health = 100
+var health = 300
 var player_in_attack_zone = false
 var can_take_damage = true
-var is_attacking = false
+
 var isDead: bool = false
-var bow_cooldown = true
-var arrow = preload("res://arrow.tscn")
 
 func _physics_process(delta):
 	if isDead: return
@@ -21,29 +18,13 @@ func _physics_process(delta):
 	if player_chase:
 		position += (player.position - position)/speed
 		
-		$Marker2D.look_at(player.position)
 		
-		if bow_cooldown == true:
-			
-			var arrow_instance = arrow.instantiate()
-			arrow_instance.rotation = $Marker2D.rotation
-			arrow_instance.global_position = $Marker2D.global_position
-			bow_cooldown = false
-			add_child(arrow_instance)
-			#var animation = "attack"
-			#animation_sprite.play(animation)
-			#await animation_sprite.animation_finished
-			
-			
-			await get_tree().create_timer(0.5).timeout
-			bow_cooldown = true
 		$AnimatedSprite2D.play("walk")
-		if(position.x) != null:
-			if (player.position.x) != null:
-				if(player.position.x - position.x) < 0:
-					$AnimatedSprite2D.flip_h = false
-				else: 
-					$AnimatedSprite2D.flip_h = true
+		
+		if(player.position.x - position.x) < 0:
+			$AnimatedSprite2D.flip_h = true
+		else: 
+			$AnimatedSprite2D.flip_h = false
 	else:
 		$AnimatedSprite2D.play("idle")
 	
@@ -53,7 +34,7 @@ func enemy():
 func update_health():
 	var healthbar = $healthbar
 	
-	if health >= 100:
+	if health >= 300:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true

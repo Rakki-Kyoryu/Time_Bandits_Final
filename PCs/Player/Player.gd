@@ -90,9 +90,23 @@ func current_camera():
 	if Global.current_scene == "field":
 		$field_camera.enabled = true
 		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
 	elif Global.current_scene == "cliff_side":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = true
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+	elif Global.current_scene == "plato":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = true
+		$plato_boss_camera.enabled = false
+	elif Global.current_scene == "plato_boss":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = true
 
 func _on_player_hitbox_area_entered(area):
 	if area.has_method("collect"):
@@ -125,6 +139,6 @@ func _on_hurtbox_area_entered(area):
 	health_changed = true
 	print(current_health)
 	if current_health <=0:
-		$AnimatedSprite2D.play("death")
-		await $AnimatedSprite2D.animation_finished
+		$AnimationPlayer.play("death")
+		await $AnimationPlayer.animation_finished
 		queue_free()

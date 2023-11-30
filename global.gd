@@ -19,6 +19,8 @@ func finish_changing_scenes():
 	if transition_scene == true:
 		transition_scene = false
 		if current_scene == "field":
-			current_scene = "cliff_side"
+			current_scene = "plato"
+		elif current_scene == "plato":
+			current_scene = "plato_boss"
 		else:
 			current_scene = "field"

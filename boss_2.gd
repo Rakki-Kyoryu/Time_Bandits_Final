@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-class_name Boss
+class_name Boss2
 
 @onready var animation_sprite = $AnimatedSprite2D
 var speed = 75
@@ -35,7 +35,7 @@ func _physics_process(delta):
 			#await animation_sprite.animation_finished
 			
 			
-			await get_tree().create_timer(0.5).timeout
+			await get_tree().create_timer(0.001).timeout
 			bow_cooldown = true
 		$AnimatedSprite2D.play("walk")
 		if(position.x) != null:
