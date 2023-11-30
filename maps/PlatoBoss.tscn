@@ -1,10 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3oxni5cxih7s"]
+[gd_scene load_steps=13 format=3 uid="uid://d3oxni5cxih7s"]
 
+[ext_resource type="Script" path="res://maps/PlatoBoss.gd" id="1_moxw7"]
 [ext_resource type="Texture2D" uid="uid://ldlpk4i7ixyv" path="res://art/sprites/tilesets/floors/wooden.png" id="1_tvv6l"]
 [ext_resource type="Texture2D" uid="uid://c5csmdi4xhnd7" path="res://art/sprites/tilesets/grass.png" id="2_jwqcr"]
 [ext_resource type="Texture2D" uid="uid://cfn41g5o0yyj7" path="res://art/sprites/tilesets/walls/walls.png" id="3_art5y"]
 [ext_resource type="PackedScene" uid="uid://ddlorq0uqm26g" path="res://slime_boss.tscn" id="4_1g4c8"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="5_h81vn"]
+[ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="7_wu0cs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3k45"]
 texture = ExtResource("1_tvv6l")
@@ -53,7 +55,11 @@ sources/0 = SubResource("TileSetAtlasSource_x3k45")
 sources/1 = SubResource("TileSetAtlasSource_f6ivb")
 sources/2 = SubResource("TileSetAtlasSource_rpi56")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4xdi1"]
+size = Vector2(107.5, 72)
+
+[node name="PlatoBoss" type="Node2D"]
+script = ExtResource("1_moxw7")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hkjsj")
@@ -67,3 +73,20 @@ position = Vector2(587, 351)
 position = Vector2(589, 48)
 
 [node name="plato_boss_camera" type="Camera2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(157, 65)
+polygon = PackedVector2Array(4, -1, 321, -2, 324, -68, 531, -66, 531, 0, 849, -1, 853, 514, 509, 512, 510, 589, 405, 597, 402, 511, 0, 510, 2, 21, -70, 54, -109, 584, 531, 714, 925, 668, 920, 361, 927, -11, 896, -94, 636, -129, 337, -119, 55, -105, -62, -63, -52, 17, -1, 15)
+
+[node name="plato_boss_exit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plato_boss_exit"]
+position = Vector2(614.75, 617)
+shape = SubResource("RectangleShape2D_4xdi1")
+
+[node name="UI" parent="." instance=ExtResource("7_wu0cs")]
+
+[connection signal="body_entered" from="plato_boss_exit" to="." method="_on_plato_boss_exit_body_entered"]
+[connection signal="body_exited" from="plato_boss_exit" to="." method="_on_plato_boss_exit_body_exited"]

@@ -16,6 +16,7 @@ var lastAnimDirection: String = "Down"
 var isAttacking: bool = false
 @export var inventory: Inventory
 
+var health_fix_1 = true
 
 func _ready():
 	pass
@@ -27,6 +28,10 @@ func _physics_process(delta):
 	move_and_slide()
 	update_animations()
 	current_camera()
+	
+	if Global.current_scene == "jade" && health_fix_1 == true:
+		current_health = 500
+		health_fix_1 = false
 	
 	if current_health <= 0:
 		player_alive = false
@@ -92,21 +97,43 @@ func current_camera():
 		$cliffside_camera.enabled = false
 		$plato_camera.enabled = false
 		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
 	elif Global.current_scene == "cliff_side":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = true
 		$plato_camera.enabled = false
 		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
 	elif Global.current_scene == "plato":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
 		$plato_camera.enabled = true
 		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
 	elif Global.current_scene == "plato_boss":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
 		$plato_camera.enabled = false
 		$plato_boss_camera.enabled = true
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
+	elif Global.current_scene == "jade":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = true
+		$statue_boss_camera.enabled = false
+	elif Global.current_scene == "statue_boss":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = true
 
 func _on_player_hitbox_area_entered(area):
 	if area.has_method("collect"):

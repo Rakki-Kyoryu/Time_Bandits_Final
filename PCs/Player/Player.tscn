@@ -544,8 +544,18 @@ shape = SubResource("CircleShape2D_df3jt")
 
 [node name="plato_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1167
+limit_bottom = 641
 
 [node name="plato_boss_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="jade_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="statue_boss_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]

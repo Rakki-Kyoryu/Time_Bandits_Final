@@ -54,6 +54,7 @@ func _on_hurtbox_area_entered(area):
 	health = health - 20
 	if health <=0:
 		isDead = true
+		Global.is_boss_defeated = true
 		$AnimatedSprite2D.play("death")
 		await $AnimatedSprite2D.animation_finished
 		queue_free()

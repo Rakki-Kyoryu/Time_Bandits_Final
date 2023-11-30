@@ -1,12 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhl46xwbohnha"]
+[gd_scene load_steps=7 format=3 uid="uid://2u8jol6jmxfe"]
 
-[ext_resource type="Texture2D" uid="uid://djans4aan8klx" path="res://art/Stone.jpg" id="1_dhx7d"]
 [ext_resource type="Texture2D" uid="uid://ldlpk4i7ixyv" path="res://art/sprites/tilesets/floors/wooden.png" id="2_jgyrp"]
-[ext_resource type="Texture2D" uid="uid://x3f3p424limx" path="res://Green.jpg" id="3_52wkg"]
-[ext_resource type="Texture2D" uid="uid://cydbam10qt21l" path="res://art/Radiation.png" id="4_or5v8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_383yl"]
-texture = ExtResource("1_dhx7d")
 8:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oclbg"]
@@ -14,12 +10,9 @@ texture = ExtResource("2_jgyrp")
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_iua4p"]
-texture = ExtResource("3_52wkg")
 30:9/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_be5lo"]
-texture = ExtResource("4_or5v8")
-48:13/size_in_atlas = Vector2i(12, 12)
 48:13/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_kou04"]
