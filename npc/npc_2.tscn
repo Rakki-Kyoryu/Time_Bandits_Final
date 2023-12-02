@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://coo2dsdmxq3ih"]
+
+[ext_resource type="PackedScene" uid="uid://cxixomci502fp" path="res://npc/npc_1.tscn" id="1_dx1y7"]
+[ext_resource type="Script" path="res://npc/NPC2.gd" id="2_7cv47"]
+
+[node name="NPC2" instance=ExtResource("1_dx1y7")]
+script = ExtResource("2_7cv47")
+
+[node name="interaction_area" parent="." index="1"]
+action_name = "interact"

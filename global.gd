@@ -21,7 +21,15 @@ func finish_changing_scenes():
 	if transition_scene == true:
 		transition_scene = false
 		if current_scene == "field":
+			current_scene = "lab"
+		elif current_scene == "lab":
+			current_scene = "hub"
+		elif current_scene == "hub":
+			current_scene = "hub"
+		elif current_scene == "holder_one":
 			current_scene = "plato"
+		elif current_scene == "gallery":
+			current_scene = "gallery"
 		elif current_scene == "plato":
 			current_scene = "plato_boss"
 		elif current_scene == "plato_boss" && is_boss_defeated == true:

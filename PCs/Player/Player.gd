@@ -46,6 +46,7 @@ func handle_input():
 		attack()
 		
 func attack():
+	print(Global.current_scene)
 	animations.play("attack" + lastAnimDirection)
 	isAttacking = true
 	await animations.animation_finished
@@ -99,6 +100,29 @@ func current_camera():
 		$plato_boss_camera.enabled = false
 		$jade_camera.enabled = false
 		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
+	elif Global.current_scene == "lab":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = true
+		$hub.enabled = false
+		$gallery_camera.enabled = false
+	elif Global.current_scene == "hub":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = true
+		$gallery_camera.enabled = false
 	elif Global.current_scene == "cliff_side":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = true
@@ -106,6 +130,9 @@ func current_camera():
 		$plato_boss_camera.enabled = false
 		$jade_camera.enabled = false
 		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
 	elif Global.current_scene == "plato":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -113,6 +140,9 @@ func current_camera():
 		$plato_boss_camera.enabled = false
 		$jade_camera.enabled = false
 		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
 	elif Global.current_scene == "plato_boss":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -120,6 +150,9 @@ func current_camera():
 		$plato_boss_camera.enabled = true
 		$jade_camera.enabled = false
 		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
 	elif Global.current_scene == "jade":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -127,6 +160,9 @@ func current_camera():
 		$plato_boss_camera.enabled = false
 		$jade_camera.enabled = true
 		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
 	elif Global.current_scene == "statue_boss":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -134,6 +170,19 @@ func current_camera():
 		$plato_boss_camera.enabled = false
 		$jade_camera.enabled = false
 		$statue_boss_camera.enabled = true
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
+	elif Global.current_scene == "gallery":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = true
 
 func _on_player_hitbox_area_entered(area):
 	if area.has_method("collect"):
@@ -155,9 +204,6 @@ func _on_player_hitbox_body_entered(body):
 func _on_player_hitbox_body_exited(body):
 	if body.has_method("enemy"):
 		enemy_in_attack_range = false
-
-
-
 
 func _on_hurtbox_area_entered(area):
 	if area == $hitbox: return

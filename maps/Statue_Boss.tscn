@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://rc3jfgcsjlty"]
+[gd_scene load_steps=12 format=3 uid="uid://rc3jfgcsjlty"]
 
 [ext_resource type="Script" path="res://maps/Statue_Boss.gd" id="1_o5gkn"]
 [ext_resource type="Texture2D" uid="uid://r0jo5wokdroi" path="res://art/2D/view-Ortho/image/Wood.jpg" id="2_po32v"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="4_nhkmn"]
 [ext_resource type="PackedScene" uid="uid://5gp2vfd0bvbe" path="res://PCs/enemy/terracotta.tscn" id="4_oqp13"]
 [ext_resource type="PackedScene" uid="uid://g72lm2nxsbkt" path="res://boss_2.tscn" id="5_vr0w3"]
+[ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="7_hauy3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yeree"]
 texture = ExtResource("2_po32v")
@@ -3700,3 +3701,5 @@ position = Vector2(633, 637)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
 polygon = PackedVector2Array(239, 44, 1024, 49, 1025, 460, 941, 465, 945, 545, 813, 545, 817, 656, 448, 659, 447, 544, 318, 546, 317, 464, 237, 466, 236, 57, 211, 57, 230, 708, 723, 779, 1119, 733, 1360, 504, 1230, -36, 783, -175, 328, -128, 202, -51, 215, 25)
+
+[node name="UI" parent="." instance=ExtResource("7_hauy3")]

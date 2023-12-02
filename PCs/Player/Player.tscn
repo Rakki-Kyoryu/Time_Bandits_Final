@@ -462,7 +462,7 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_df3jt"]
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 3
+collision_layer = 11
 script = ExtResource("1_xo3eq")
 inventory = ExtResource("2_sndne")
 
@@ -557,6 +557,14 @@ zoom = Vector2(2, 2)
 
 [node name="statue_boss_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="lab_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="hub" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="gallery_camera" type="Camera2D" parent="."]
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]

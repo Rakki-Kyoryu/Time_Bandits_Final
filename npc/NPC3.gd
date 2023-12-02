@@ -20,5 +20,3 @@ func _ready():
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines)
 	await DialogManager.dialog_finished
-
-

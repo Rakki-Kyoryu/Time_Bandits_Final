@@ -1,12 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://cde72i72fy5fs"]
+[gd_scene load_steps=13 format=3 uid="uid://cde72i72fy5fs"]
 
-[ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="1_f1e30"]
-[ext_resource type="Texture2D" uid="uid://5ngtjm107qvo" path="res://art/2D/view-Ortho/image/download (3).jpg" id="2_lcnm4"]
-[ext_resource type="Texture2D" uid="uid://drfl3iav6q86o" path="res://art/2D/view-Ortho/image/images.jpg" id="3_n62ks"]
-[ext_resource type="PackedScene" uid="uid://coo2dsdmxq3ih" path="res://npc_2.tscn" id="4_tr711"]
+[ext_resource type="Script" path="res://maps/lab1.gd" id="1_68fjf"]
+[ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="1_viawq"]
+[ext_resource type="Texture2D" uid="uid://5ngtjm107qvo" path="res://art/2D/view-Ortho/image/download (3).jpg" id="2_udv18"]
+[ext_resource type="Texture2D" uid="uid://drfl3iav6q86o" path="res://art/2D/view-Ortho/image/images.jpg" id="3_nokq5"]
+[ext_resource type="PackedScene" uid="uid://coo2dsdmxq3ih" path="res://npc/npc_2.tscn" id="4_xqw4c"]
+[ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="5_ingsl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_q0sd1"]
-texture = ExtResource("2_lcnm4")
+texture = ExtResource("2_udv18")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -196,7 +198,7 @@ texture = ExtResource("2_lcnm4")
 16:10/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hic54"]
-texture = ExtResource("3_n62ks")
+texture = ExtResource("3_nokq5")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -398,7 +400,7 @@ sources/0 = SubResource("TileSetAtlasSource_q0sd1")
 sources/1 = SubResource("TileSetAtlasSource_hic54")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1iuyj"]
-texture = ExtResource("3_n62ks")
+texture = ExtResource("3_nokq5")
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
@@ -598,9 +600,13 @@ texture = ExtResource("3_n62ks")
 [sub_resource type="TileSet" id="TileSet_mx5ua"]
 sources/0 = SubResource("TileSetAtlasSource_1iuyj")
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hru2n"]
+size = Vector2(46, 74)
 
-[node name="Player" parent="." instance=ExtResource("1_f1e30")]
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_68fjf")
+
+[node name="Player" parent="." instance=ExtResource("1_viawq")]
 position = Vector2(50, 274)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -623,5 +629,18 @@ tile_set = SubResource("TileSet_mx5ua")
 format = 2
 layer_0/tile_data = PackedInt32Array(-2752500, 65536, 2, -2686964, 65536, 3, -2621428, 65536, 4, -2752499, 131072, 2, -2686963, 131072, 3, -2621427, 131072, 4, -2752498, 196608, 2, -2686962, 196608, 3, -2621426, 196608, 4, -2752497, 262144, 2, -2686961, 262144, 3, -2621425, 262144, 4, -2752496, 327680, 2, -2686960, 327680, 3, -2621424, 327680, 4, -2752495, 393216, 2, -2686959, 393216, 3, -2621423, 393216, 4, -2752494, 458752, 2, -2686958, 458752, 3, -2621422, 458752, 4, -2752493, 524288, 2, -2686957, 524288, 3, -2621421, 524288, 4)
 
-[node name="NPC2" parent="." instance=ExtResource("4_tr711")]
+[node name="NPC2" parent="." instance=ExtResource("4_xqw4c")]
 position = Vector2(338, 286)
+
+[node name="UI" parent="." instance=ExtResource("5_ingsl")]
+
+[node name="Lab1_exit" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lab1_exit"]
+position = Vector2(649, 243)
+shape = SubResource("RectangleShape2D_hru2n")
+
+[node name="lab_camera" type="Camera2D" parent="."]
+
+[connection signal="body_entered" from="Lab1_exit" to="." method="_on_lab_1_exit_body_entered"]
+[connection signal="body_exited" from="Lab1_exit" to="." method="_on_lab_1_exit_body_exited"]

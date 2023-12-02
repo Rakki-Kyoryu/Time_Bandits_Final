@@ -19,6 +19,7 @@ func register_area(area: InteractionArea):
 func unregister_area(area: InteractionArea):
 	
 	var index = active_areas.find(area)
+	print(index)
 	if index != -1:
 		active_areas.remove_at(index)
 
@@ -49,8 +50,8 @@ func _input(event):
 			label.hide()
 			print("fire")
 			await active_areas[0].interact.call()
-		else:
-			can_interact = true
+			
+		can_interact = true
 		
 		
 		

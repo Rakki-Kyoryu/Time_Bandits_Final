@@ -18,6 +18,7 @@ var arrow = preload("res://arrow.tscn")
 func _physics_process(delta):
 	if isDead: return
 	update_health()
+	print(player)
 	if player_chase:
 		position += (player.position - position)/speed
 		
@@ -55,7 +56,7 @@ func _on_detection_area_body_exited(body):
 
 func _on_hurtbox_area_entered(area):
 	if area == $hitbox: return
-	Global.boss_health_pool = Global.boss_health_pool - 20
+	Global.boss_health_pool = Global.boss_health_pool - 10
 	if Global.boss_health_pool <=0:
 		isDead = true
 		queue_free()

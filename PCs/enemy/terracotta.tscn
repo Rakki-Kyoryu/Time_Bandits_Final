@@ -37,3 +37,7 @@ sprite_frames = SubResource("SpriteFrames_ct2x8")
 animation = &"idle"
 frame = 0
 frame_progress = 0.0
+
+[node name="detection_area" parent="." index="1"]
+collision_layer = 0
+collision_mask = 8

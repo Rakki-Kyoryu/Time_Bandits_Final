@@ -53,7 +53,7 @@ func _on_detection_area_body_exited(body):
 func _on_hurtbox_area_entered(area):
 	if area == $hitbox: return
 	health = health - 20
-	Global.boss_health_pool = Global.boss_health_pool - 20
+	Global.boss_health_pool = Global.boss_health_pool - 10
 	if health <=0:
 		isDead = true
 		queue_free()

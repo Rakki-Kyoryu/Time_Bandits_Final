@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="18_auxl7"]
 [ext_resource type="Script" path="res://ui/ui.gd" id="19_25d7t"]
 [ext_resource type="PackedScene" uid="uid://rb6h65pi6tip" path="res://ui/inventory_gui.tscn" id="19_nal3v"]
-[ext_resource type="PackedScene" uid="uid://cxixomci502fp" path="res://npc_1.tscn" id="22_s7vln"]
+[ext_resource type="PackedScene" uid="uid://cxixomci502fp" path="res://npc/npc_1.tscn" id="22_s7vln"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_qw6d6"]
 scenes/1/scene = ExtResource("3_54mll")
