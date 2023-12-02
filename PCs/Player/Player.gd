@@ -103,6 +103,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "lab":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -113,6 +115,8 @@ func current_camera():
 		$lab_camera.enabled = true
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "hub":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -123,6 +127,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = true
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "cliff_side":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = true
@@ -133,6 +139,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "plato":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -143,6 +151,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "plato_boss":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -153,6 +163,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "jade":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -163,6 +175,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "statue_boss":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -173,6 +187,8 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
 	elif Global.current_scene == "gallery":
 		$field_camera.enabled = false
 		$cliffside_camera.enabled = false
@@ -183,7 +199,32 @@ func current_camera():
 		$lab_camera.enabled = false
 		$hub.enabled = false
 		$gallery_camera.enabled = true
-
+		$material_camera.enabled = false
+		$nuke_camera.enabled = false
+	elif Global.current_scene == "material":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
+		$material_camera.enabled = true
+		$nuke_camera.enabled = false
+	elif Global.current_scene == "nuke_boss":
+		$field_camera.enabled = false
+		$cliffside_camera.enabled = false
+		$plato_camera.enabled = false
+		$plato_boss_camera.enabled = false
+		$jade_camera.enabled = false
+		$statue_boss_camera.enabled = false
+		$lab_camera.enabled = false
+		$hub.enabled = false
+		$gallery_camera.enabled = false
+		$material_camera.enabled = false
+		$nuke_camera.enabled = true
 func _on_player_hitbox_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)

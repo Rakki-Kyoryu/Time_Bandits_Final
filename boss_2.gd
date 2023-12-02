@@ -59,5 +59,6 @@ func _on_hurtbox_area_entered(area):
 	Global.boss_health_pool = Global.boss_health_pool - 10
 	if Global.boss_health_pool <=0:
 		isDead = true
+		Global.is_boss_defeated2 = true
 		queue_free()
 

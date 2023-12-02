@@ -7,13 +7,14 @@ var speed = 75
 var player_chase = false
 var player = null
 
-var health = 100
+var health = 500
 var player_in_attack_zone = false
 var can_take_damage = true
 var is_attacking = false
 var isDead: bool = false
 var bow_cooldown = true
 var arrow = preload("res://arrow.tscn")
+var count = 0
 
 func _physics_process(delta):
 	if isDead: return
@@ -34,9 +35,17 @@ func _physics_process(delta):
 			#animation_sprite.play(animation)
 			#await animation_sprite.animation_finished
 			
-			
-			await get_tree().create_timer(0.5).timeout
-			bow_cooldown = true
+			if health >= 250:
+				await get_tree().create_timer(0.75).timeout
+				bow_cooldown = true
+			elif health < 250 && count <= 200:
+				await get_tree().create_timer(0.01).timeout
+				bow_cooldown = true
+				count = count +1
+			elif health < 250 && count > 200:
+				await get_tree().create_timer(5.0).timeout
+				bow_cooldown = true
+				count = 0
 		$AnimatedSprite2D.play("walk")
 		if(position.x) != null:
 			if (player.position.x) != null:
@@ -53,7 +62,7 @@ func enemy():
 func update_health():
 	var healthbar = $healthbar
 	
-	if health >= 100:
+	if health >= 500:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
@@ -73,6 +82,7 @@ func _on_hurtbox_area_entered(area):
 	health = health - 20
 	if health <=0:
 		isDead = true
+		Global.is_boss_defeated3 = true
 		$AnimatedSprite2D.play("death")
 		await $AnimatedSprite2D.animation_finished
 		queue_free()

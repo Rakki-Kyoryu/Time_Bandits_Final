@@ -253,6 +253,6 @@ offset_left = -28.6566
 offset_top = 46.0349
 offset_right = 38.3434
 offset_bottom = 60.0349
-max_value = 100.0
+max_value = 500.0
 
 [node name="Marker2D" type="Marker2D" parent="." index="6"]

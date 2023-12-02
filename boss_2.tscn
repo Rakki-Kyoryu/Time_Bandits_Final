@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://g72lm2nxsbkt"]
+[gd_scene load_steps=9 format=3 uid="uid://g72lm2nxsbkt"]
 
 [ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="1_r1qqa"]
 [ext_resource type="Script" path="res://boss_2.gd" id="2_oouhn"]
@@ -43,6 +43,15 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wpc3"]
+size = Vector2(74.8335, 124.156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxcrc"]
+size = Vector2(80.8421, 129.945)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v8ary"]
+size = Vector2(14.9413, 22.2682)
+
 [node name="Boss 2" instance=ExtResource("1_r1qqa")]
 scale = Vector2(1.83073, 1.5545)
 script = ExtResource("2_oouhn")
@@ -65,5 +74,17 @@ offset_top = 46.0349
 offset_right = 38.3434
 offset_bottom = 60.0349
 max_value = 500.0
+
+[node name="CollisionShape2D" parent="hitbox" index="0"]
+position = Vector2(2.45804, -29.2699)
+shape = SubResource("RectangleShape2D_8wpc3")
+
+[node name="CollisionShape2D" parent="." index="4"]
+position = Vector2(1.63869, -29.5915)
+shape = SubResource("RectangleShape2D_bxcrc")
+
+[node name="CollisionShape2D" parent="hurtbox" index="0"]
+position = Vector2(0.546229, -30.2348)
+shape = SubResource("RectangleShape2D_v8ary")
 
 [node name="Marker2D" type="Marker2D" parent="." index="6"]

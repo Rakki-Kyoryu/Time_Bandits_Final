@@ -14,6 +14,8 @@ var player_start_posy = 313
 
 var boss_health_pool = 500
 var game_first_loadin = true
+var is_boss_defeated2
+var is_boss_defeated3
 
 var player_health = 500
 
@@ -36,7 +38,11 @@ func finish_changing_scenes():
 			current_scene = "jade"
 		elif current_scene == "jade":
 			current_scene = "statue_boss"
-		elif current_scene == "statue_boss":
+		elif current_scene == "statue_boss" && is_boss_defeated2 == true:
 			current_scene = "material"
+		elif current_scene == "material":
+			current_scene = "nuke_boss"
+		elif current_scene == "nuke_boss" && is_boss_defeated3 == true:
+			current_scene = "victory"
 		else:
 			current_scene = "field"

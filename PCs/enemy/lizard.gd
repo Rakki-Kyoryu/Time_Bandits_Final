@@ -9,7 +9,8 @@ var player = null
 var health = 50
 var player_in_attack_zone = false
 var can_take_damage = true
-
+var bow_cooldown = true
+var arrow = preload("res://arrow.tscn")
 
 func _physics_process(delta):
 	
@@ -17,8 +18,16 @@ func _physics_process(delta):
 	deal_with_damage()
 	if player_chase:
 		position += (player.position - position)/speed
-		
-		
+		$Marker2D.look_at(player.position)
+			
+		if bow_cooldown == true:
+			var arrow_instance = arrow.instantiate()
+			arrow_instance.rotation = $Marker2D.rotation
+			arrow_instance.global_position = $Marker2D.global_position
+			bow_cooldown = false
+			add_child(arrow_instance)
+			await get_tree().create_timer(0.5).timeout
+			bow_cooldown = true	
 		$AnimatedSprite2D.play("walk")
 		
 		if(player.position.x - position.x) < 0:
