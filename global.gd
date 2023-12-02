@@ -12,6 +12,7 @@ var player_exit_cliffside_posy = 121
 var player_start_posx = 58
 var player_start_posy = 313
 
+var boss_health_pool = 500
 var game_first_loadin = true
 
 var player_health = 500

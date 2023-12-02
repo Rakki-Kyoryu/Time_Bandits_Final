@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://5gp2vfd0bvbe"]
+
+[ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="1_dvqvs"]
+[ext_resource type="Script" path="res://terracotta.gd" id="2_wclqt"]
+[ext_resource type="Texture2D" uid="uid://b7xxie2ql2e8r" path="res://art/2D/view-Ortho/image/Army.jpg" id="3_h2iga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s7y3k"]
+atlas = ExtResource("3_h2iga")
+region = Rect2(480, 273, 160, 273)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ct2x8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7y3k")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s7y3k")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[node name="terracotta" instance=ExtResource("1_dvqvs")]
+script = ExtResource("2_wclqt")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(3.18407, -26.986)
+scale = Vector2(0.545346, 0.443084)
+sprite_frames = SubResource("SpriteFrames_ct2x8")
+animation = &"idle"
+frame = 0
+frame_progress = 0.0

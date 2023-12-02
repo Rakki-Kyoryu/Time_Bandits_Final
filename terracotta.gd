@@ -1,36 +1,33 @@
 extends CharacterBody2D
 
-class_name Boss2
+class_name Terracotta
 
-@onready var animation_sprite = $AnimatedSprite2D
-var speed = 125
+var speed = 50
 var player_chase = false
 var player = null
 
-var health = 100
+var health = 50
 var player_in_attack_zone = false
 var can_take_damage = true
-var is_attacking = false
+
 var isDead: bool = false
-var bow_cooldown = true
-var arrow = preload("res://arrow.tscn")
 
 func _physics_process(delta):
 	if isDead: return
 	update_health()
-	if player_chase:
-		position += (player.position - position)/speed
-		
-		
-		$AnimatedSprite2D.play("walk")
-		if(position.x) != null:
-			if (player.position.x) != null:
-				if(player.position.x - position.x) < 0:
-					$AnimatedSprite2D.flip_h = false
-				else: 
-					$AnimatedSprite2D.flip_h = true
-	else:
-		$AnimatedSprite2D.play("idle")
+	if Global.boss_health_pool <=300:
+		if player_chase:
+			position += (player.position - position)/speed
+			
+			
+			$AnimatedSprite2D.play("walk")
+			
+			if(player.position.x - position.x) < 0:
+				$AnimatedSprite2D.flip_h = true
+			else: 
+				$AnimatedSprite2D.flip_h = false
+		else:
+			$AnimatedSprite2D.play("idle")
 	
 func enemy():
 	pass
@@ -38,11 +35,11 @@ func enemy():
 func update_health():
 	var healthbar = $healthbar
 	
-	if Global.boss_health_pool >= 500:
+	if health >= 50:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-	$healthbar.value = Global.boss_health_pool
+	$healthbar.value = health
 
 func _on_detection_area_body_entered(body):
 	if body.has_method("player_check"):
@@ -55,8 +52,9 @@ func _on_detection_area_body_exited(body):
 
 func _on_hurtbox_area_entered(area):
 	if area == $hitbox: return
+	health = health - 20
 	Global.boss_health_pool = Global.boss_health_pool - 20
-	if Global.boss_health_pool <=0:
+	if health <=0:
 		isDead = true
 		queue_free()
 
