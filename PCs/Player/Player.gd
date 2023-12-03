@@ -327,7 +327,7 @@ func _on_player_hitbox_body_exited(body):
 
 func _on_hurtbox_area_entered(area):
 	if area == $hitbox: return
-	current_health = current_health - 20
+	current_health = current_health - 15
 	Global.player_health = current_health
 	health_changed = true
 	print(current_health)

@@ -87,7 +87,7 @@ func _on_detection_area_body_exited(body):
 func _on_hurtbox_area_entered(area):
 	if area == $hitbox: return
 	if stall == false:
-		health = health - 10
+		health = health - 25
 		if health <=0:
 			isDead = true
 			Global.is_boss_defeated_china = true
