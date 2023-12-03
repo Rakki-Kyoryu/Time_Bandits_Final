@@ -14,8 +14,11 @@ var player_start_posy = 313
 
 var boss_health_pool = 500
 var game_first_loadin = true
-var is_boss_defeated2
-var is_boss_defeated3
+var is_boss_defeated2 = false
+var is_boss_defeated3 = false
+var is_boss_defeated_china = false
+var is_boss_defeated_village = false
+var is_boss_defeated_warehouse = false
 
 var player_health = 500
 
@@ -43,6 +46,14 @@ func finish_changing_scenes():
 		elif current_scene == "material":
 			current_scene = "nuke_boss"
 		elif current_scene == "nuke_boss" && is_boss_defeated3 == true:
+			current_scene = "victory"
+		elif current_scene == "robot":
+			current_scene = "village"
+		elif current_scene == "village" && is_boss_defeated_village == true:
+			current_scene = "warehouse"
+		elif current_scene == "warehouse" && is_boss_defeated_warehouse == true:
+			current_scene = "china"
+		elif current_scene == "china" && is_boss_defeated_china == true:
 			current_scene = "victory"
 		else:
 			current_scene = "field"

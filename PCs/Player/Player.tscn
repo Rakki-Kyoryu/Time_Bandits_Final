@@ -571,6 +571,15 @@ zoom = Vector2(1.5, 1.5)
 
 [node name="nuke_camera" type="Camera2D" parent="."]
 
+[node name="village_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="warehouse_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
+[node name="china_camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
+
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="player_hitbox" to="." method="_on_player_hitbox_body_exited"]

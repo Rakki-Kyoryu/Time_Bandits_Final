@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b73emg8d48ivm"]
+
+[ext_resource type="PackedScene" uid="uid://d0gqsvq5gmbj5" path="res://PCs/enemy/robot.tscn" id="1_7jbfj"]
+[ext_resource type="Script" path="res://Robotp2.gd" id="2_j1mgc"]
+
+[node name="Robot" instance=ExtResource("1_7jbfj")]
+script = ExtResource("2_j1mgc")
