@@ -31,21 +31,9 @@ func _physics_process(delta):
 			arrow_instance.global_position = $Marker2D.global_position
 			bow_cooldown = false
 			add_child(arrow_instance)
-			#var animation = "attack"
-			#animation_sprite.play(animation)
-			#await animation_sprite.animation_finished
-			
-			if health >= 250:
-				await get_tree().create_timer(0.75).timeout
-				bow_cooldown = true
-			elif health < 250 && count <= 200:
-				await get_tree().create_timer(0.01).timeout
-				bow_cooldown = true
-				count = count +1
-			elif health < 250 && count > 200:
-				await get_tree().create_timer(5.0).timeout
-				bow_cooldown = true
-				count = 0
+			await get_tree().create_timer(1.75).timeout
+			bow_cooldown = true
+				
 		$AnimatedSprite2D.play("walk")
 		if(position.x) != null:
 			if (player.position.x) != null:

@@ -25913,5 +25913,11 @@ shape = SubResource("RectangleShape2D_kr46n")
 [node name="Robot" parent="." instance=ExtResource("10_iijwr")]
 position = Vector2(575, 331)
 
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-243, -20)
+polygon = PackedVector2Array(791, 934, 1444, 933, 1444, 729, 850, 730, 850, 721, 1445, 720, 1442, 515, 851, 515, 851, 444, 1443, 441, 1444, 19, 242, 20, 243, 445, 785, 447, 786, 514, 243, 516, 245, 726, 788, 726, 786, 730, 245, 733, 245, 932, 771, 934, 770, 1002, 136, 1001, -39, 341, 138, -100, 833, -127, 1505, -69, 1820, 373, 1724, 844, 1484, 1118, 839, 1123, 707, 1071, 868, 1004, 771, 955, 771, 934)
+
 [connection signal="body_entered" from="china_exit" to="." method="_on_china_exit_body_entered"]
 [connection signal="body_exited" from="china_exit" to="." method="_on_china_exit_body_exited"]

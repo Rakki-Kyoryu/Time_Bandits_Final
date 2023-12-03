@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b71ubedwq0dy7"]
+[gd_scene load_steps=27 format=3 uid="uid://b71ubedwq0dy7"]
 
 [ext_resource type="Texture2D" uid="uid://dxb7b6r3u7icx" path="res://art/2D/view-Ortho/image/RPG Nature Tileset.png" id="1_580do"]
 [ext_resource type="Script" path="res://maps/robot_map_1.gd" id="1_ktjc6"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://fsvk6rdkukqh" path="res://art/2D/view-Ortho/image/furniture.png" id="7_i881c"]
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="8_m6r5r"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="9_wukxl"]
+[ext_resource type="PackedScene" uid="uid://b0pm3dx08b45x" path="res://PCs/enemy/George.tscn" id="10_1wak3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfsvj"]
 texture = ExtResource("1_580do")
@@ -7775,6 +7776,9 @@ sources/0 = SubResource("TileSetAtlasSource_k5g8b")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sbf1k"]
 size = Vector2(204, 61)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_modt1"]
+size = Vector2(158, 157)
+
 [node name="Robot map 1" type="Node2D"]
 script = ExtResource("1_ktjc6")
 
@@ -7835,6 +7839,18 @@ position = Vector2(666, 266)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="village_exit"]
 position = Vector2(1944, 239.5)
 shape = SubResource("RectangleShape2D_sbf1k")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1634, 3, 2050, 1, 2048, 18, 1621, 22, 1623, 231, 1631, 229, 1631, 193, 1697, 199, 1692, 178, 1635, 179, 1635, 33, 1837, 34, 1834, 176, 1746, 182, 1742, 194, 1833, 192, 1839, 219, 1849, 214, 1852, 32, 2048, 33, 2047, 402, 1853, 403, 1851, 273, 1835, 272, 1839, 302, 1804, 302, 1810, 394, 1766, 396, 1766, 324, 1718, 320, 1720, 402, 1634, 399, 1635, 272, 1620, 279, 1623, 423, 2048, 418, 2050, 641, -1, 641, 0, 0, 743, 1, 737, 176, 894, 182, 898, 0, 1315, 0, 1315, 169, 1470, 166, 1473, 0, 1609, 1, 1596, -132, 1133, -169, -83, -155, -279, 359, -171, 715, 881, 795, 1741, 789, 2279, 715, 2433, 39, 2143, -187, 1705, -97, 1609, 5, 1636, 7)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(813, 416)
+shape = SubResource("RectangleShape2D_modt1")
+
+[node name="George" parent="." instance=ExtResource("10_1wak3")]
+position = Vector2(1737, 262)
 
 [connection signal="body_entered" from="village_exit" to="." method="_on_village_exit_body_entered"]
 [connection signal="body_exited" from="village_exit" to="." method="_on_village_exit_body_exited"]

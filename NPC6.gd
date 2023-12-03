@@ -9,6 +9,8 @@ const lines: Array[String] = [
 	"The right leads to a gallery to see some art",
 	"The bottom and top are NOT returnable without exiting the game",
 	"The gallery allows you to come and go as you please",
+	"Also time traveling is difficult,", 
+	"so make sure to throw timelines in dissaray by defeating anyone you come across",
 ]
 
 func _ready():
