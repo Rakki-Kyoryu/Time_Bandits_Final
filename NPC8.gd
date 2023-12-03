@@ -5,9 +5,7 @@ extends Node2D
 
 const lines: Array[String] = [
 	"Hey there!",
-	"Up here is the boss rush path",
-	"Please note this is very difficult and is questionably possible",
-	"(Section Designer: Nathaniel)",
+	"I think hitting that stone guy below harmed that statue in the next room",
 ]
 
 func _ready():
@@ -17,3 +15,5 @@ func _ready():
 func _on_interact():
 	DialogManager.start_dialog(global_position, lines)
 	await DialogManager.dialog_finished
+
+

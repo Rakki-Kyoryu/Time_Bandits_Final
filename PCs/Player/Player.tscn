@@ -551,34 +551,78 @@ limit_bottom = 641
 
 [node name="plato_boss_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1160
+limit_bottom = 650
 
 [node name="jade_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1160
+limit_bottom = 643
 
 [node name="statue_boss_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1165
+limit_bottom = 656
 
 [node name="lab_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 31
+limit_top = 141
+limit_right = 665
+limit_bottom = 363
 
 [node name="hub" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 68
+limit_top = 114
+limit_right = 780
+limit_bottom = 414
 
 [node name="gallery_camera" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+limit_left = 81
+limit_top = 114
+limit_right = 1320
+limit_bottom = 529
 
 [node name="material_camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1165
+limit_bottom = 650
 
 [node name="nuke_camera" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 1165
+limit_bottom = 650
 
 [node name="village_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 2047
+limit_bottom = 639
 
 [node name="warehouse_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 819
+limit_bottom = 654
 
 [node name="china_camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = 0
+limit_top = 0
+limit_right = 1190
+limit_bottom = 928
 
 [connection signal="area_entered" from="player_hitbox" to="." method="_on_player_hitbox_area_entered"]
 [connection signal="body_entered" from="player_hitbox" to="." method="_on_player_hitbox_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ce5fcg7f4sy02"]
+[gd_scene load_steps=19 format=3 uid="uid://ce5fcg7f4sy02"]
 
 [ext_resource type="Script" path="res://maps/PlatosJournal.gd" id="1_763nn"]
 [ext_resource type="Texture2D" uid="uid://c5csmdi4xhnd7" path="res://art/sprites/tilesets/grass.png" id="1_emi3d"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ky6wrqn5vyyd" path="res://art/sprites/objects.png" id="5_sgxe7"]
 [ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="7_obpdl"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="7_shdep"]
+[ext_resource type="PackedScene" uid="uid://dtgkr46xlwox2" path="res://npc/npc_7.tscn" id="8_nddry"]
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="9_0aad7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3rpw"]
@@ -175,6 +176,9 @@ position = Vector2(1031, 580)
 
 [node name="enemy4" parent="TileMap" instance=ExtResource("7_obpdl")]
 position = Vector2(843, 281)
+
+[node name="NPC7" parent="TileMap" instance=ExtResource("8_nddry")]
+position = Vector2(1089, 225)
 
 [node name="Player" parent="." instance=ExtResource("7_shdep")]
 position = Vector2(17, 82)

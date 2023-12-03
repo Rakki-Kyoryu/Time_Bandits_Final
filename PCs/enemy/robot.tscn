@@ -90,7 +90,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uqrtf")
 }],
-"loop": true,
+"loop": false,
 "name": &"armor",
 "speed": 5.0
 }, {

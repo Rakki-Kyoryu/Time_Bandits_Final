@@ -70,7 +70,7 @@ layer_0/tile_data = PackedInt32Array(0, 1, 0, 1, 1, 0, 65537, 1, 0, 131073, 1, 0
 position = Vector2(587, 351)
 
 [node name="Player" parent="." instance=ExtResource("5_h81vn")]
-position = Vector2(589, 48)
+position = Vector2(583, 51)
 
 [node name="plato_boss_camera" type="Camera2D" parent="."]
 

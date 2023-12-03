@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0pm3dx08b45x"]
+
+[ext_resource type="PackedScene" uid="uid://c4qryaxfwynpw" path="res://PCs/enemy/boss.tscn" id="1_pa2nh"]
+[ext_resource type="Script" path="res://George.gd" id="2_jkh7j"]
+
+[node name="George" instance=ExtResource("1_pa2nh")]
+script = ExtResource("2_jkh7j")

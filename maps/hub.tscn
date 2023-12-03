@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://yocrplusd0bs"]
+[gd_scene load_steps=25 format=3 uid="uid://yocrplusd0bs"]
 
 [ext_resource type="Script" path="res://maps/hub.gd" id="1_sar5y"]
 [ext_resource type="Texture2D" uid="uid://5ngtjm107qvo" path="res://art/2D/view-Ortho/image/download (3).jpg" id="1_v5at2"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="3_1iidx"]
 [ext_resource type="PackedScene" uid="uid://chjmvs6sg5wxo" path="res://npc/npc_4.tscn" id="4_clgfo"]
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="7_gjfyt"]
+[ext_resource type="PackedScene" uid="uid://dvskmqy8n8js0" path="res://npc/npc_5.tscn" id="7_ru3ea"]
+[ext_resource type="PackedScene" uid="uid://bpmxe60owwa56" path="res://npc/npc_6.tscn" id="8_sl567"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y41h5"]
 texture = ExtResource("1_v5at2")
@@ -1590,7 +1592,7 @@ script = ExtResource("1_sar5y")
 
 [node name="Player" parent="." instance=ExtResource("3_1iidx")]
 z_index = 2
-position = Vector2(102, 281)
+position = Vector2(79, 280)
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_xko0l")
@@ -1624,6 +1626,14 @@ rotation = 1.5708
 position = Vector2(-145, 451)
 rotation = -4.71239
 
+[node name="NPC5" parent="TileMap4" instance=ExtResource("7_ru3ea")]
+position = Vector2(-296.003, 742.999)
+rotation = 1.5708
+
+[node name="NPC6" parent="TileMap4" instance=ExtResource("8_sl567")]
+position = Vector2(-263.001, 208.999)
+rotation = 1.5708
+
 [node name="hub" type="Camera2D" parent="."]
 
 [node name="UI" parent="." instance=ExtResource("7_gjfyt")]
@@ -1645,6 +1655,11 @@ shape = SubResource("RectangleShape2D_lvurn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="to_plato"]
 position = Vector2(400.25, 419.5)
 shape = SubResource("RectangleShape2D_qcl73")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(63, 110, 66, 241, 48, 240, 49, 307, 66, 306, 62, 418, 367, 413, 368, 438, 436, 438, 432, 413, 785, 418, 785, 306, 802, 307, 801, 237, 784, 238, 783, 112, 433, 113, 434, 92, 365, 93, 366, 111, 70, 111, 113, 54, 442, 33, 634, 47, 866, 74, 895, 292, 861, 464, 682, 546, 329, 533, 35, 467, -47, 302, -2, 78, 113, 54, 89, 85, 69, 111)
 
 [connection signal="body_entered" from="to_gallery" to="." method="_on_to_gallery_body_entered"]
 [connection signal="body_exited" from="to_gallery" to="." method="_on_to_gallery_body_exited"]

@@ -7,7 +7,8 @@ extends Node2D
 const lines: Array[String] = [
 	"Hey there!",
 	"Here is my route where you'll find me rare artifacts",
-	"But before that, check out the gallery to the right!",
+	"Down here is a longer stage that is slightly easier, though",
+	"(section designer: Malachi)",
 ]
 
 func _ready():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://pyarj7l3bw88"]
+[gd_scene load_steps=23 format=3 uid="uid://pyarj7l3bw88"]
 
 [ext_resource type="Texture2D" uid="uid://dg5x38da4y1gu" path="res://art/2D/view-Ortho/image/Jade.jpg" id="1_hiaco"]
 [ext_resource type="Script" path="res://maps/Jade_Statue.gd" id="1_sh33o"]
@@ -7,7 +7,11 @@
 [ext_resource type="Texture2D" uid="uid://dwlmevptl183d" path="res://art/2D/view-Ortho/image/Warrior.jpg" id="5_tnroh"]
 [ext_resource type="PackedScene" uid="uid://rvof7u3euf3h" path="res://PCs/Player/Player.tscn" id="6_gudny"]
 [ext_resource type="Texture2D" uid="uid://ky6wrqn5vyyd" path="res://art/sprites/objects.png" id="6_s7rop"]
+[ext_resource type="PackedScene" uid="uid://cunbik0iisbo4" path="res://PCs/enemy/lizard.tscn" id="7_mv33o"]
 [ext_resource type="PackedScene" uid="uid://dgyqreeayumlw" path="res://ui/ui.tscn" id="8_bk1cq"]
+[ext_resource type="PackedScene" uid="uid://cgp30g6rkxy5d" path="res://PCs/enemy/enemy.tscn" id="8_n2f5w"]
+[ext_resource type="PackedScene" uid="uid://5gp2vfd0bvbe" path="res://PCs/enemy/terracotta.tscn" id="9_ahmfa"]
+[ext_resource type="PackedScene" uid="uid://b4e00r8bkg1hl" path="res://npc/npc_8.tscn" id="10_v4ocq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lx8pd"]
 0:0/0 = 0
@@ -2937,6 +2941,21 @@ layer_1/y_sort_origin = 0
 layer_1/z_index = 0
 layer_1/tile_data = PackedInt32Array(1507366, 196609, 1, 983060, 3, 1, 1900561, 327685, 0, 1966097, 327685, 0, 2031634, 327685, 0, 2097170, 327685, 0, 2162706, 327685, 0, 2228242, 327685, 0, 2228241, 327685, 0, 2162705, 327685, 0, 2097169, 327685, 0, 2031633, 327685, 0, 1900562, 327685, 0, 1966098, 327685, 0, 1966099, 327685, 0, 1900563, 327685, 0, 1835027, 327685, 0, 1835028, 327685, 0, 1835029, 327685, 0, 1900565, 327685, 0, 1900564, 327685, 0, 1835026, 327685, 0, 1835025, 327685, 0, 1966100, 327685, 0, 2031636, 327685, 0, 2031635, 327685, 0, 2097171, 327685, 0, 2162707, 327685, 0, 2228243, 327685, 0, 2228244, 327685, 0, 2228245, 327685, 0, 2228246, 327685, 0, 2162710, 327685, 0, 2097174, 327685, 0, 2031638, 327685, 0, 1966102, 327685, 0, 1900566, 327685, 0, 1835030, 327685, 0, 1966101, 327685, 0, 2031637, 327685, 0, 2097173, 327685, 0, 2162709, 327685, 0, 2162708, 327685, 0, 2097172, 327685, 0, 2424878, 655365, 0, 2424879, 720901, 0, 1769527, 5, 0)
 
+[node name="lizard" parent="TileMap" instance=ExtResource("7_mv33o")]
+position = Vector2(82, 581)
+
+[node name="enemy" parent="TileMap" instance=ExtResource("8_n2f5w")]
+position = Vector2(12, 478)
+
+[node name="enemy2" parent="TileMap" instance=ExtResource("8_n2f5w")]
+position = Vector2(523, 253)
+
+[node name="terracotta" parent="TileMap" instance=ExtResource("9_ahmfa")]
+position = Vector2(1049, 548)
+
+[node name="NPC8" parent="TileMap" instance=ExtResource("10_v4ocq")]
+position = Vector2(1053, 267)
+
 [node name="jade_exit" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jade_exit"]
@@ -2953,7 +2972,7 @@ position = Vector2(499, 266)
 polygon = PackedVector2Array(233, -3, 236, 232, -4, 233, -5, -7)
 
 [node name="Player" parent="." instance=ExtResource("6_gudny")]
-position = Vector2(297, 32)
+position = Vector2(296, 47)
 
 [node name="jade_camera" type="Camera2D" parent="."]
 

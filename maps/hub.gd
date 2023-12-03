@@ -22,7 +22,7 @@ func change_scene():
 				Global.finish_changing_scenes()
 			elif robot == true:
 				Global.current_scene = "robot"
-				get_tree().change_scene_to_file("res://maps/Statue_Boss.tscn")
+				get_tree().change_scene_to_file("res://maps/robot_map_1.tscn")
 				Global.finish_changing_scenes()
 			elif gallery == true:
 				Global.current_scene = "gallery"

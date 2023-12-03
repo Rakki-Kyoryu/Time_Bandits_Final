@@ -6743,16 +6743,17 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "The Text Box"
 
 [node name="Label7" type="Label" parent="."]
-offset_left = 915.0
-offset_top = 398.0
-offset_right = 1027.0
-offset_bottom = 502.0
+offset_left = 910.0
+offset_top = 397.0
+offset_right = 1022.0
+offset_bottom = 522.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 15
-text = "A week too 
-late but 
-better then 
-nothing"
+text = "a fine Textbox
+but was given 
+too late to 
+implement
+without issues"
 horizontal_alignment = 1
 
 [node name="Label8" type="Label" parent="."]
